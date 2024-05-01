@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: iterative/setup-dvc@v1
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -15,5 +16,6 @@ jobs:
         with:
               path: "requirements.txt"
       - run: flake8 starter
+      - run: dvc pull
       - run: pytest starter/tests
 

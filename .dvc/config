@@ -1,4 +1,6 @@
 [core]
-    remote = local
+    remote = datastore
 ['remote "local"']
     url = /Users/dan.dumitriu/dvc
+['remote "datastore"']
+    url = s3://dan-bucket001

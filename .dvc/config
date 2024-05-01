@@ -1,6 +1,7 @@
 [core]
-    remote = s3pub
+    remote = s3
 ['remote "local"']
     url = /Users/dan.dumitriu/dvc
-['remote "s3pub"']
-    url = https://dan-bucket001.s3.eu-central-1.amazonaws.com
+['remote "s3"']
+    url = s3://dan-bucket001/files
+    endpointurl = https://dan-bucket001.s3.eu-central-1.amazonaws.com/files

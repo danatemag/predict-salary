@@ -53,10 +53,6 @@ def compute_model_metrics_by_cat(data, y, y_preds, category):
     data['y'] = y
     data['y_preds'] = y_preds
 
-    ydt = data[data['y_preds'] == 1]
-    ydt = ydt[data['y'] == 1]
-    print(ydt.values[0])
-
     vals = data[category].unique()
     metrics = {}
     for val in vals:

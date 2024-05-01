@@ -35,19 +35,19 @@ def test_predict_0():
 
 def test_predict_1():
     response = client.post("/", json={
-        "age": 29,
-        "workclass": "Private",
-        "fnlgt": 185908,
-        "education": "Bachelors",
-        "education-num": 13,
+        "age": 58,
+        "workclass": "Self-emp-not-inc",
+        "fnlgt": 93664,
+        "education": "HS-grad",
+        "education-num": 9,
         "marital-status": "Married-civ-spouse",
         "occupation": "Exec-managerial",
         "relationship": "Husban",
-        "race": "Black",
+        "race": "White",
         "sex": "Male",
-        "capital-gain": 0,
+        "capital-gain": 15024,
         "capital-loss": 0,
-        "hours-per-week": 55,
+        "hours-per-week": 60,
         "native-country": "United-States"
     })
 

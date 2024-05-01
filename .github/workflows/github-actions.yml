@@ -15,5 +15,6 @@ jobs:
         with:
               path: "requirements.txt"
       - run: flake8 --exclude venv,sanitycheck.py
+      - run: python train_model.py
       - run: pytest tests
 

@@ -1,4 +1,4 @@
-from starter.ml.model import train_model, compute_model_metrics, inference
+from ml.model import train_model, compute_model_metrics, inference
 from sklearn.linear_model import LogisticRegression
 
 

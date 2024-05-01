@@ -2,7 +2,7 @@ import pickle
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-from starter.ml.data import process_data
+from ml.data import process_data
 
 app = FastAPI()
 
@@ -21,6 +21,7 @@ cat_features = [
     "native-country",
 ]
 
+
 class DataRow(BaseModel):
     age: int
     workclass: str
@@ -37,6 +38,7 @@ class DataRow(BaseModel):
     hours_per_week: int = Field(alias='hours-per-week')
     native_country: str = Field(alias='native-country')
 
+
 @app.get("/")
 def read_root() -> dict:
     return {"Hello": "World"}
@@ -45,17 +47,17 @@ def read_root() -> dict:
 @app.post("/")
 def inference(row: DataRow) -> dict:
     global model, encoder, lb, cat_features
-    
+
     obj = row.dict()
-    newobj = { k.replace('_', '-'): v for k, v in obj.items() }
+    newobj = {k.replace('_', '-'): v for k, v in obj.items()}
     df = pd.DataFrame([newobj])
 
     print(df.values[0])
-    X, _, _, _ = process_data(df, cat_features, training=False, encoder=encoder, lb=lb)
+    X, _, _, _ = process_data(
+        df, cat_features, training=False, encoder=encoder, lb=lb
+    )
     print(X)
     preds = model.predict(X)
     print(preds)
 
-    return {
-        "prediction": preds[0].item()
-    }
+    return {"prediction": preds[0].item()}

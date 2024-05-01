@@ -3,11 +3,13 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
+
 def test_read_main():
     response = client.get("/")
 
     assert response.status_code == 200
     assert response.json() == {"Hello": "World"}
+
 
 def test_predict_0():
     response = client.post("/", json={
@@ -29,6 +31,7 @@ def test_predict_0():
 
     assert response.status_code == 200
     assert response.json() == {"prediction": 0}
+
 
 def test_predict_1():
     response = client.post("/", json={

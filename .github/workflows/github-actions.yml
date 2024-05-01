@@ -15,7 +15,6 @@ jobs:
         uses: py-actions/py-dependency-install@v4
         with:
               path: "requirements.txt"
-      - run: flake8 starter
-      - run: dvc pull
-      - run: pytest starter/tests
+      - run: flake8 --exclude venv
+      - run: pytest tests
 

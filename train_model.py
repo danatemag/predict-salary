@@ -13,7 +13,7 @@ from ml.model import (train_model, compute_model_metrics,
 # Add code to load in the data.
 print('Loading data ...')
 cur_dir = os.path.dirname(os.path.realpath(__file__))
-data = pd.read_csv(cur_dir + '/../data/census.csv')
+data = pd.read_csv(cur_dir + '/data/census.csv')
 
 print('Splitting data ...')
 # Optional enhancement, use K-fold cross validation instead of a
@@ -57,7 +57,7 @@ print(metrics)
 cat_metrics = compute_model_metrics_by_cat(
     test, y_test, y_preds, cat_features[0])
 
-with open(f'{cur_dir}/../model/sliced_output.txt', 'w') as f:
+with open(f'{cur_dir}/model/sliced_output.txt', 'w') as f:
     f.write(json.dumps(cat_metrics, indent=4))
 
 save_files = {
@@ -68,5 +68,5 @@ save_files = {
 
 print('Saving model files ...')
 for key in save_files.keys():
-    with open(f'{cur_dir}/../model/{key}.pkl', 'wb') as f:
+    with open(f'{cur_dir}/model/{key}.pkl', 'wb') as f:
         pickle.dump(save_files[key], f)

@@ -11,7 +11,7 @@ def test_read_main():
 
 def test_predict_0():
     response = client.post("/", json={
-        "age": 11,
+        "age": 24,
         "workclass": "Private",
         "fnlgt": 284582,
         "education": "Bachelors",

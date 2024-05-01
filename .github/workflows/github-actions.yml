@@ -5,7 +5,15 @@ jobs:
   Run-Flake-And-Tests:
     runs-on: ubuntu-latest
     steps:
-      - run: pip install -r requirements.txt
+      - uses: actions/checkout@v3
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        uses: py-actions/py-dependency-install@v4
+        with:
+              path: "requirements.txt"
       - run: flake8 starter
       - run: pytest starter/tests
 

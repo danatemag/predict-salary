@@ -1,6 +1,6 @@
 [core]
-    remote = datastore
+    remote = s3pub
 ['remote "local"']
     url = /Users/dan.dumitriu/dvc
-['remote "datastore"']
-    url = s3://dan-bucket001
+['remote "s3pub"']
+    url = https://dan-bucket001.s3.eu-central-1.amazonaws.com

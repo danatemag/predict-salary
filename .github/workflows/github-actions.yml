@@ -1,21 +1,46 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Test and deploy
+
+on:
+  push:
+    branches: [main]
+
+
 jobs:
-  Run-Flake-And-Tests:
+
+  test:
+    name: Test
     runs-on: ubuntu-latest
+
+
     steps:
-      - uses: actions/checkout@v3
-      - name: setup python
+      - name: Checkout
+        uses: actions/checkout@v3
+
+
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.8'
-      - name: Install dependencies
+
+
+      - name: Pip install
         uses: py-actions/py-dependency-install@v4
         with:
               path: "requirements.txt"
-      - run: flake8 --exclude venv,sanitycheck.py
-      - run: mkdir model
-      - run: python train_model.py
-      - run: pytest tests
+
+
+      - name: Flake
+        run: flake8 --exclude venv,sanitycheck.py
+
+
+      - name: Create model dir
+        run: mkdir model
+
+
+      - name: Train Model
+        run: python train_model.py
+
+
+      - name: Run Tests
+        run: pytest tests
 
